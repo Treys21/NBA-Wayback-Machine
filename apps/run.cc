@@ -2,13 +2,14 @@
 
 #include <cinder/app/App.h>
 #include <cinder/app/RendererGl.h>
-
+#include "InteractiveObject.h"
 #include "my_app.h"
 
 
 using cinder::app::App;
 using cinder::app::RendererGl;
 
+using namespace std;
 
 namespace myapp {
 
@@ -18,7 +19,7 @@ const int kHeight = 800;
 
 void SetUp(App::Settings* settings) {
   settings->setWindowSize(kWidth, kHeight);
-  settings->setTitle("My CS 126 Application");
+  settings->setTitle("Welcome to the NBA wayback machine!");
 }
 
 }  // namespace myapp

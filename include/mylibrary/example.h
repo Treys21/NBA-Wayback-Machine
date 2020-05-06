@@ -2,8 +2,12 @@
 #ifndef FINALPROJECT_MYLIBRARY_EXAMPLE_H_
 #define FINALPROJECT_MYLIBRARY_EXAMPLE_H_
 
+#include <csv2/reader.hpp>
+
+using namespace std;
 
 namespace mylibrary {
+
 
 }  // namespace mylibrary
 
