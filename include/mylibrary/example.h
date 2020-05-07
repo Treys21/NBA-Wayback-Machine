@@ -2,7 +2,7 @@
 #ifndef FINALPROJECT_MYLIBRARY_EXAMPLE_H_
 #define FINALPROJECT_MYLIBRARY_EXAMPLE_H_
 
-#include <csv2/reader.hpp>
+#include <csv.h>
 
 using namespace std;
 

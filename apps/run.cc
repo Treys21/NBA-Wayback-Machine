@@ -2,9 +2,7 @@
 
 #include <cinder/app/App.h>
 #include <cinder/app/RendererGl.h>
-#include "InteractiveObject.h"
 #include "my_app.h"
-
 
 using cinder::app::App;
 using cinder::app::RendererGl;

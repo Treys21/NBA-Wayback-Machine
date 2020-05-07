@@ -2,7 +2,6 @@
 
 #include "my_app.h"
 #include <cinder/app/App.h>
-
 #include <memory>
 
 namespace myapp {
@@ -12,40 +11,28 @@ using cinder::app::App;
 using namespace std;
 using namespace cinder;
 
-shared_ptr<InteractiveTextBox> textBox;
-
-
 MyApp::MyApp() { }
 
 void MyApp::setup() {
-    cinder::Rectf rect( 0, 0, 300.0f, 300.0f );
-    textBox = std::make_shared<InteractiveTextBox>( rect );
+    ImGui::initialize();
 }
 
-void MyApp::update() { }
+void MyApp::update() {
+    if (ImGui::Button("Search Player")) {
+
+    }
+}
 
 void MyApp::draw() {
-    gl::enableAlphaBlending();
-    gl::clear( Color( 0, 0, 0 ) );
-    textBox->draw();
+    ImGui::Text("Please enter a current of former NBA player to begin the search");
+
+    static char name[14] = "stephen curry";
+    ImGui::InputText("Player Name", name, IM_ARRAYSIZE(name));
+    ImGui::SameLine(0, -1);
+    ImGui::Button("Search Player");
 }
 
 void MyApp::keyDown(KeyEvent event) {
-    textBox->keyDown( event );
-}
-
-void MyApp::mouseDown( cinder::app::MouseEvent event ){
-    textBox->mouseDown( event );
-}
-void MyApp::mouseUp( cinder::app::MouseEvent event ){
-    textBox->mouseUp( event );
-}
-
-void MyApp::mouseDrag( cinder::app::MouseEvent event ){
-    textBox->mouseDrag( event );
-}
-void MyApp::mouseMove( cinder::app::MouseEvent event ){
-    textBox->mouseMove( event );
 }
 
 }  // namespace myapp

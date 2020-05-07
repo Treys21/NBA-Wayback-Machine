@@ -87,15 +87,3 @@ if(NOT catch2_POPULATED)
 endif()
 
 # Add more CMake libraries here ...
-FetchContent_Declare(
-        csv
-        GIT_REPOSITORY https://github.com/p-ranav/csv2.git
-        GIT_TAG
-)
-
-FetchContent_GetProperties(csv)
-if(NOT csv_POPULATED)
-    FetchContent_Populate(csv)
-    add_library(csv INTERFACE)
-    target_include_directories(csv INTERFACE ${csv_SOURCE_DIR}/include)
-endif()
