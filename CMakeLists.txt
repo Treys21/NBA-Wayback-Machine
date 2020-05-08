@@ -87,3 +87,17 @@ if(NOT catch2_POPULATED)
 endif()
 
 # Add more CMake libraries here ...
+FetchContent_Declare(
+        csv
+        GIT_REPOSITORY https://github.com/p-ranav/csv2.git
+        GIT_TAG
+)
+
+# Adds catch2 library. This is a header only library.
+FetchContent_GetProperties(csv)
+if(NOT csv_POPULATED)
+    FetchContent_Populate(csv)
+    # This is overkill since we only need a single file. Though it is a clean solution.
+    add_library(csv INTERFACE)
+    target_include_directories(csv INTERFACE ${csv_SOURCE_DIR}/include)
+endif()
