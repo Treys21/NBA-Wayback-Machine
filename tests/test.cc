@@ -5,7 +5,7 @@
 #include <catch2/catch.hpp>
 #include <cinder/Rand.h>
 
-#include <mylibrary/example.h>
+#include <mylibrary/database.h>
 
 
 TEST_CASE("Random sanity test", "[random]") {

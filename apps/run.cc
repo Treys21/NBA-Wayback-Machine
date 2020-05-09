@@ -2,7 +2,7 @@
 
 #include <cinder/app/App.h>
 #include <cinder/app/RendererGl.h>
-#include "my_app.h"
+#include "wayback_machine.h"
 
 using cinder::app::App;
 using cinder::app::RendererGl;
