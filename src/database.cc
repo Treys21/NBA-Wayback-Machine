@@ -16,8 +16,8 @@ namespace mylibrary {
      * Uses ifstream to read csv file line by line into a 2d string vector
      */
     void ParseCsv::load_data() {
-
-        ifstream file(filename);
+        ifstream file;
+        file.open(cinder::app::getAssetPath(filename));
 
         string word, row;
         while (getline(file, row)) {

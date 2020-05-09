@@ -32,7 +32,7 @@ namespace mylibrary {
         const int percent_conversion = 100;
         const double percent = 20; // desired margin of error for stats
         const double rounding_factor = 0.01; // to prevent division by 0
-        const string filename = "C:\\Users\\Anik Patel\\Desktop\\cinder_0.9.2_vc2015\\my-projects\\final-project-Treys21\\resources\\nba-data-historical.csv";
+        const string filename = "nba-data-historical.csv";
     };
 }
   // namespace mylibrary
