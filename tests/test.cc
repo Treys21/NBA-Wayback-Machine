@@ -13,8 +13,8 @@ mylibrary::Database csv;
 TEST_CASE("Find Similarities", "[Database]") {
     csv.load_data();
     REQUIRE(csv.find_similarities("2016", "klay thompson").size() > 0);
-    REQUIRE(csv.find_similarities("2016", "Draymond Green").size() > 0);
-    REQUIRE(csv.find_similarities("2016", "ANDREW BOGUT").size() > 0);
+    REQUIRE(csv.find_similarities("2016", "KeViN DuRaNt").size() > 0);
+    REQUIRE(csv.find_similarities("2016", "ANDREW WIGGINS").size() > 0);
     REQUIRE(csv.find_similarities("1980", "klay thompson").size() == 0);
     REQUIRE(csv.find_similarities("2010", "larry bird").size() == 0);
 }
