@@ -20,7 +20,7 @@ class MyApp : public cinder::app::App {
   void keyDown(cinder::app::KeyEvent) override;
 
 private:
-    mylibrary::ParseCsv csv;
+    mylibrary::Database csv;
     string name;
     vector<int> years;
     vector<int> comparisons;

@@ -11,7 +11,7 @@ using namespace std;
 
 namespace mylibrary {
 
-    class ParseCsv {
+    class Database {
     public:
         void load_data();
         vector<int> find_player(string name);
@@ -19,10 +19,10 @@ namespace mylibrary {
         string print_stats(int row);
         bool is_similar(vector<double> first_player, vector<double> second_player);
         vector<vector<string>> data;
-        string getHeader();
+        string get_header();
+        vector<double> get_stats(vector<string> player);
 
     private:
-        vector<double> get_stats(vector<string> player);
         const int useless_col = 7;
         const int stat_start = 12;
         const int stat_end = 17;

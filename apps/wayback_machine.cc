@@ -29,7 +29,7 @@ void MyApp::setup() {
  * Updates player statlines based on user input
  */
 void MyApp::update() {
-    ImGui::Text(csv.getHeader().c_str());
+    ImGui::Text(csv.get_header().c_str());
 
     for (size_t i = 0; i < years.size(); i++) {
         string line = csv.print_stats(years.at(i));
@@ -48,7 +48,8 @@ void MyApp::update() {
 void MyApp::draw() {
     static char user_input[40] = "Hit enter to search";
     ImGui::Text("Please enter a current or former NBA player to begin the search"); // first user input
-    if (ImGui::InputText("Enter player name", user_input, IM_ARRAYSIZE(user_input), ImGuiInputTextFlags_EnterReturnsTrue)) {
+    if (ImGui::InputText("Enter player name", user_input, IM_ARRAYSIZE(user_input),
+            ImGuiInputTextFlags_EnterReturnsTrue)) {
         name = user_input;
         years.clear();
         comparisons.clear();
@@ -57,8 +58,10 @@ void MyApp::draw() {
 
     static char input[40] = "Hit search to enter";
     ImGui::Text("Now enter the year you would like to run comparisons to."); // second user input
-    if (ImGui::InputText("Enter desired season", input, IM_ARRAYSIZE(input), ImGuiInputTextFlags_EnterReturnsTrue)) {
+    if (ImGui::InputText("Enter desired season", input, IM_ARRAYSIZE(input),
+            ImGuiInputTextFlags_EnterReturnsTrue)) {
         comparisons.clear();
+        //years.clear();
         comparisons = csv.find_similarities(input, name);
     }
 }

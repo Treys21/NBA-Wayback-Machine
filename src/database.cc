@@ -6,6 +6,7 @@
 #include <fstream>
 #include <imgui.h>
 #include <cmath>
+#include <algorithm>
 #include <csv2/reader.hpp>
 
 using namespace std;
@@ -15,7 +16,7 @@ namespace mylibrary {
     /**
      * Uses ifstream to read csv file line by line into a 2d string vector
      */
-    void ParseCsv::load_data() {
+    void Database::load_data() {
         ifstream file;
         file.open(cinder::app::getAssetPath(filename));
 
@@ -36,11 +37,15 @@ namespace mylibrary {
      * @param name of user inputed player
      * @return list of indices of their seasons
      */
-    vector<int> ParseCsv::find_player(string name) {
+    vector<int> Database::find_player(string name) {
         vector<int> years;
 
+        transform(name.begin(), name.end(), name.begin(), ::tolower);
+
         for (size_t i = 1; i < data.size(); i++) {
-            if (data.at(i).at(1).compare(name) == 0) {
+            string player = data.at(i).at(name_index);
+            transform(player.begin(), player.end(), player.begin(), ::tolower);
+            if (player.compare(name) == 0) {
                 years.push_back(i);
             }
         }
@@ -55,30 +60,40 @@ namespace mylibrary {
      * @param name of player selected by user
      * @return indices of similar seasons
      */
-    vector<int> ParseCsv::find_similarities(string season, string name) {
+    vector<int> Database::find_similarities(string season, string name) {
         int row_number = 0;
+        vector<int> comps;
+
+        transform(name.begin(), name.end(), name.begin(), ::tolower);
+
         for (size_t i = 0; i < data.size(); i++) {
-            if (data.at(i).at(name_index).compare(name) == 0 && data.at(i).at(name_index + 1).compare(season) == 0) {
+            string player = data.at(i).at(name_index);
+            transform(player.begin(), player.end(), player.begin(), ::tolower);
+
+            if (player.compare(name) == 0 && data.at(i).at(name_index + 1).compare(season) == 0) {
                 row_number = i;
                 break;
             }
         }
 
-        vector<string> player = data.at(row_number);
+        if (row_number == 0) {
+            return comps;
+        }
 
-        vector<double> stat_line = get_stats(player);
-
-        vector<int> comps;
+        vector<double> stat_line = get_stats(data.at(row_number));
 
         for (size_t i = 1; i < data.size(); i++) {
+            string bball_player = data.at(i).at(name_index);
+            transform(bball_player.begin(), bball_player.end(), bball_player.begin(), ::tolower);
 
-            if (data.at(row_number).at(position_index).compare(data.at(i).at(position_index)) != 0) {
+            if (data.at(row_number).at(position_index).compare(data.at(i).at(position_index)) != 0 ||
+                bball_player.compare(name) == 0) {
                 continue;
             }
 
-
             boolean similarities = is_similar(stat_line, get_stats(data.at(i)));
-            if (similarities && data.at(i).at(name_index).compare(name) != 0) {
+
+            if (similarities) {
                 comps.push_back(i);
             }
         }
@@ -87,11 +102,11 @@ namespace mylibrary {
     }
 
     /**
-     *
-     * @param player
-     * @return
+     * Gets stats to compare from the data of player season from the string vector
+     * @param player other player
+     * @return list of stats to compare
      */
-    vector<double> ParseCsv::get_stats(vector<string> player) {
+    vector<double> Database::get_stats(vector<string> player) {
         int stat_index = 8; // starting index of stats
         vector<double> stat_line;
         for (size_t i = stat_index; i < stat_end; i++) {
@@ -110,7 +125,7 @@ namespace mylibrary {
      * @param second_player revalent stats to compare
      * @return false if statline are not similar, true if they are
      */
-    bool ParseCsv::is_similar(vector<double> first_player, vector<double> second_player) {
+    bool Database::is_similar(vector<double> first_player, vector<double> second_player) {
 
         if (second_player.at(1) < minutes_min) {
             return 0;
@@ -132,7 +147,7 @@ namespace mylibrary {
      * @param row of the players season in dataset
      * @return statline to display
      */
-    string ParseCsv::print_stats(int row) {
+    string Database::print_stats(int row) {
         vector<string> stats = data.at(row);
         string statline;
         for (int i = 1; i < useless_col; i++) {
@@ -149,7 +164,7 @@ namespace mylibrary {
      * Return title header for displaying statlines of players
      * @return
      */
-    string ParseCsv::getHeader() {
+    string Database::get_header() {
         return "Player Year Age Position Team Team Rating Points/36 True Shooting Assists/36 Rebounds/36 Blocks/36";
     }
 
