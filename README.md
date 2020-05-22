@@ -14,14 +14,8 @@ Finding top 5 similar nba player seasons since 1977 courtesy of the RAPTOR model
 Comparing prime seasons to your favorite player and discover hidden gem seasons throughout history that are not
 talked about today.
 
-Example
+Examples:
 
-Player Name: Stephen Curry
-Season: 2016
-
-Paul George 2016 season .... 80% similar
-Kevin Garnett 2004 season... 40% similar
-Kobe Bryant 2006 season... 20% similar
-Allen Iverson 2001... 90% similar
-Dwayne Wade 2008 season 70% similar 
-
+![Stephen Curry 2016](https://github.com/Treys21/NBA-Wayback-Machine/blob/master/stephen%20curry%202016.PNG)
+![Micheal Jordan 1996](https://github.com/Treys21/NBA-Wayback-Machine/blob/master/Michael%20Jordan.PNG)
+![Ja Morant 2020](https://github.com/Treys21/NBA-Wayback-Machine/blob/master/Ja%20Morant.PNG)
