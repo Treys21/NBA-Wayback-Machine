@@ -10,9 +10,7 @@ layout.
 
 Welcome to the NBA Wayback Machine!
 
-Finding top 5 similar nba player seasons since 1977 courtesy of the RAPTOR model from FiveThirtyEight.com.
-Comparing prime seasons to your favorite player and discover hidden gem seasons throughout history that are not
-talked about today.
+Comparing NBA players to current and past players since 1977. Uses nba data from FiveThirthyEight.com to find similiar player seasons to any given player season and displays them to compare.
 
 Examples:
 
