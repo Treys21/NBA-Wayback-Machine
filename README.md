@@ -10,7 +10,7 @@ layout.
 
 Welcome to the NBA Wayback Machine!
 
-Comparing NBA players to current and past players since 1977. Uses nba data from FiveThirthyEight.com to find similiar player seasons to any given player season and displays them to compare.
+Comparing NBA players to current and past players since 1977. Uses nba data from FiveThirthyEight.com to find similar player seasons to any given player season and displays them to compare.
 
 Examples:
 
